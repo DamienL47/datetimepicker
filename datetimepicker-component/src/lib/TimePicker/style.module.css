@@ -1,0 +1,56 @@
+.timePicker {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.timePicker > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+}
+.timePicker > div > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: 500;
+}
+.timePicker > div > div > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.timePicker > div > div > div:hover {
+    background-color: #e6e6e6;
+}
+.timePicker > div > div > div:active {
+    background-color: #d9d9d9;
+}
+.timePicker > div > div > div.selected {
+    background-color: #1890ff;
+    color: #fff;
+}
+.timePicker > div > div > div.disabled {
+    cursor: default;
+    color: #ccc;
+}
+.timePicker > div > div > div.disabled:hover {
+    background-color: transparent;
+}
+
