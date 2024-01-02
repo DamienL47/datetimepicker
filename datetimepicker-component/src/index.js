@@ -6,7 +6,7 @@ import moment from "moment";
 const App = () => {
   return (
     <div>
-      <DateTimePicker dateTime={moment} setDateTime={moment} showTime={false} />
+      <DateTimePicker dateTime={moment} setDateTime={moment} showTime={true} />
     </div>
   );
 };

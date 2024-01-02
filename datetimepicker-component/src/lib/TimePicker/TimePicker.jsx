@@ -1,6 +1,11 @@
 import s from "./style.module.css";
 
 export function TimePicker({ time, setTime }) {
+  // Vérification pour s'assurer que time est défini
+  if (!time) {
+    return null; // ou une autre gestion d'erreur
+  }
+
   const handleTimeChange = (e) => {
     const { name, value } = e.target;
     let intValue = parseInt(value, 10);

@@ -1,11 +1,14 @@
+import { useState } from "react";
 import s from "./style.module.css";
 
 export function Calendar({ date, setDate }) {
-  const currentDate = date || {
-    month: new Date().getMonth() + 1,
-    year: new Date().getFullYear(),
-    day: new Date().getDate(),
-  };
+  const [currentDate, setCurrentDate] = useState(
+    date || {
+      month: new Date().getMonth() + 1,
+      year: new Date().getFullYear(),
+      day: new Date().getDate(),
+    }
+  );
 
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -55,16 +58,24 @@ export function Calendar({ date, setDate }) {
   };
 
   const handleMonthSelect = (e) => {
-    setDate({ ...currentDate, month: parseInt(e.target.value, 10) });
+    const newMonth = parseInt(e.target.value, 10);
+    setCurrentDate({ ...currentDate, month: newMonth });
+    setDate({ ...currentDate, month: newMonth });
   };
 
   const handleYearSelect = (e) => {
-    setDate({ ...currentDate, year: parseInt(e.target.value, 10) });
+    const newYear = parseInt(e.target.value, 10);
+    setCurrentDate({ ...currentDate, year: newYear });
+    setDate({ ...currentDate, year: newYear });
   };
 
   const renderMonthSelector = () => {
     return (
-      <select value={currentDate.month} onChange={handleMonthSelect}>
+      <select
+        value={currentDate.month}
+        onChange={handleMonthSelect}
+        className={s.selector}
+      >
         {getMonthName().map((name, index) => (
           <option key={index} value={index + 1}>
             {name}
@@ -80,7 +91,11 @@ export function Calendar({ date, setDate }) {
       (_, i) => currentDate.year - 5 + i
     );
     return (
-      <select value={currentDate.year} onChange={handleYearSelect}>
+      <select
+        value={currentDate.year}
+        onChange={handleYearSelect}
+        className={s.selector}
+      >
         {years.map((year) => (
           <option key={year} value={year}>
             {year}
