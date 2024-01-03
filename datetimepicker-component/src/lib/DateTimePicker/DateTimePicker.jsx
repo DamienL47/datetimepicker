@@ -19,16 +19,15 @@ export function DateTimePicker({
     setShowPopup(!showPopup);
   };
 
-  const handleDateChange = (newDate) => {
-    onChange({ ...value, date: newDate });
+  const handleDateTimeChange = (newDateTime) => {
+    if (showTime && !newDateTime.time) {
+      // Si showTime est activé, mais le temps n'est pas encore défini
+      newDateTime.time = value.time || moment().startOf("hour").toDate();
+    }
+    onChange(newDateTime);
     if (!showTime) {
       togglePopup();
     }
-  };
-
-  const handleTimeChange = (newTime) => {
-    onChange({ ...value, time: newTime });
-    togglePopup();
   };
 
   const displayValue = () => {
@@ -51,14 +50,19 @@ export function DateTimePicker({
       {showPopup && (
         <div className={s.popup}>
           <Calendar
-            date={value.date}
-            setDate={handleDateChange}
+            date={value.date || moment().toDate()}
+            setDate={(newDate) =>
+              handleDateTimeChange({ ...value, date: newDate })
+            }
             // ...autres props de Calendar
           />
           {showTime && (
             <TimePicker
-              time={value.time}
-              setTime={handleTimeChange}
+              time={value.time || moment().startOf("hour").toDate()}
+              setTime={(newTime) =>
+                handleDateTimeChange({ ...value, time: newTime })
+              }
+              formatTime={formatTime}
               // ...autres props de TimePicker
             />
           )}

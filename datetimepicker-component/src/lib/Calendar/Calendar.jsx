@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import s from "./style.module.css";
-import { FORMAT_DATE, FORMAT_TIME } from "../Constants";
-import { TimePicker } from "../TimePicker/TimePicker";
 
 export function Calendar({
   date,
   setDate,
   disabledDates = [],
   disabledDaysOfWeek = [],
-  range = false,
   language = "en",
-  formatDate = FORMAT_DATE[0],
-  showTime = true,
-  formatTime = FORMAT_TIME[0],
 }) {
   useEffect(() => {
     moment.locale(language);
@@ -22,7 +16,6 @@ export function Calendar({
   const [currentDate, setCurrentDate] = useState(
     date ? moment(date) : moment()
   );
-  const [showTimePicker, setShowTimePicker] = useState(true);
 
   useEffect(() => {
     setCurrentDate(date ? moment(date) : moment());
@@ -48,15 +41,8 @@ export function Calendar({
   const handleDateClick = (day) => {
     const selectedDate = currentDate.clone().date(day);
     if (!isDateDisabled(day)) {
-      setDate({ ...date, date: selectedDate });
-      if (!showTime) {
-        setShowTimePicker(false);
-      }
+      setDate(selectedDate);
     }
-  };
-
-  const handleTimePickerToggle = () => {
-    setShowTimePicker(!showTimePicker);
   };
 
   const renderMonthSelector = () => (
@@ -95,14 +81,19 @@ export function Calendar({
     );
   };
 
-  const renderDays = () => daysOfWeek.map((day) => <div key={day}>{day}</div>);
+  const renderDays = () =>
+    daysOfWeek.map((day) => (
+      <div key={day} className={s.dayOfWeek}>
+        {day}
+      </div>
+    ));
 
   const renderCells = () => {
     const daysInMonth = getDaysInMonth();
     const firstDayOfMonth = getFirstDayOfMonth();
     const cells = [];
     for (let i = 0; i < firstDayOfMonth; i++) {
-      cells.push(<div key={`empty-start-${i}`} className={s.cell}></div>);
+      cells.push(<div key={`empty-start-${i}`} className={s.emptyCell}></div>);
     }
     for (let day = 1; day <= daysInMonth; day++) {
       const isDisabled = isDateDisabled(day);
@@ -110,7 +101,7 @@ export function Calendar({
         <div
           key={day}
           onClick={() => handleDateClick(day)}
-          className={`${s.cell} ${isDisabled ? s.disabled : ""}`}
+          className={`${s.cell} ${isDisabled ? s.disabledCell : ""}`}
         >
           {day}
         </div>
@@ -122,28 +113,11 @@ export function Calendar({
   return (
     <div className={s.calendarContainer}>
       <div className={s.header}>
-        {renderYearSelector()}
         {renderMonthSelector()}
-        {showTime && (
-          <button
-            onClick={handleTimePickerToggle}
-            className={s.timePickerToggle}
-          >
-            {showTimePicker ? "Hide Time" : "Pick Time"}
-          </button>
-        )}
+        {renderYearSelector()}
       </div>
       <div className={s.days}>{renderDays()}</div>
       <div className={s.cells}>{renderCells()}</div>
-      <div className={s.times}>
-        {showTimePicker && showTime && (
-          <TimePicker
-            time={date.time}
-            setTime={(newTime) => setDate({ ...date, time: newTime })}
-            formatTime={formatTime}
-          />
-        )}
-      </div>
     </div>
   );
 }

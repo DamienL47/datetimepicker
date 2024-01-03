@@ -41,8 +41,8 @@ const App = () => {
         value={dateTime}
         onChange={handleDateTimeChange}
         showTime={true}
-        formatDate={FORMAT_DATE[0]} // Choisissez le format de date souhaité
-        formatTime={FORMAT_TIME[1]} // Choisissez le format de temps souhaité
+        formatDate={FORMAT_DATE[0]}
+        formatTime={FORMAT_TIME[1]}
         // Autres props si nécessaire
       />
     </div>
