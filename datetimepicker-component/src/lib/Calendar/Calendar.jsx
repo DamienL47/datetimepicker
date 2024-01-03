@@ -8,6 +8,7 @@ export function Calendar({
   disabledDates = [],
   disabledDaysOfWeek = [],
   language = "en",
+  showTime,
 }) {
   useEffect(() => {
     moment.locale(language);
@@ -101,7 +102,9 @@ export function Calendar({
         <div
           key={day}
           onClick={() => handleDateClick(day)}
-          className={`${s.cell} ${isDisabled ? s.disabledCell : ""}`}
+          className={`${showTime ? s.cell : s.cellSTF} ${
+            isDisabled ? s.disabledCell : ""
+          }`}
         >
           {day}
         </div>
@@ -110,14 +113,16 @@ export function Calendar({
     return cells;
   };
 
+  const calendarClass = showTime ? s.calendarContainer : s.calendarContainerSTF;
+
   return (
-    <div className={s.calendarContainer}>
-      <div className={s.header}>
+    <div className={calendarClass}>
+      <div className={showTime ? s.header : s.headerSTF}>
         {renderMonthSelector()}
         {renderYearSelector()}
       </div>
-      <div className={s.days}>{renderDays()}</div>
-      <div className={s.cells}>{renderCells()}</div>
+      <div className={showTime ? s.days : s.daysSTF}>{renderDays()}</div>
+      <div className={showTime ? s.cells : s.cellsSTF}>{renderCells()}</div>
     </div>
   );
 }

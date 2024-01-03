@@ -8,10 +8,13 @@ import { FORMAT_DATE, FORMAT_TIME } from "../Constants";
 export function DateTimePicker({
   value,
   onChange,
-  formatDate = FORMAT_DATE[0],
-  formatTime = FORMAT_TIME[1],
-  showTime = true,
-  // ...autres props
+  formatDate,
+  formatTime,
+  showTime,
+  language,
+  disabledDates,
+  disabledDaysOfWeek,
+  disabledHours,
 }) {
   const [showPopup, setShowPopup] = useState(false);
 
@@ -21,7 +24,6 @@ export function DateTimePicker({
 
   const handleDateTimeChange = (newDateTime) => {
     if (showTime && !newDateTime.time) {
-      // Si showTime est activé, mais le temps n'est pas encore défini
       newDateTime.time = value.time || moment().startOf("hour").toDate();
     }
     onChange(newDateTime);
@@ -54,7 +56,10 @@ export function DateTimePicker({
             setDate={(newDate) =>
               handleDateTimeChange({ ...value, date: newDate })
             }
-            // ...autres props de Calendar
+            showTime={showTime}
+            disabledDates={disabledDates}
+            disabledDaysOfWeek={disabledDaysOfWeek}
+            language={language}
           />
           {showTime && (
             <TimePicker
@@ -63,7 +68,7 @@ export function DateTimePicker({
                 handleDateTimeChange({ ...value, time: newTime })
               }
               formatTime={formatTime}
-              // ...autres props de TimePicker
+              disabledHours={disabledHours}
             />
           )}
         </div>

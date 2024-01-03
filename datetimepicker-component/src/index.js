@@ -19,11 +19,12 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { DateTimePicker } from "./lib/DateTimePicker/DateTimePicker";
 import moment from "moment";
-import { FORMAT_DATE, FORMAT_TIME } from "./lib/Constants"; // Assurez-vous que le chemin est correct
+import { FORMAT_DATE, FORMAT_TIME } from "./lib/Constants";
+import "moment/locale/fr";
 
 const App = () => {
   const [dateTime, setDateTime] = useState({
-    date: moment(), // Initialisation avec la date actuelle
+    date: moment(),
     time: {
       hour: moment().hour(),
       minute: moment().minute(),
@@ -40,10 +41,10 @@ const App = () => {
       <DateTimePicker
         value={dateTime}
         onChange={handleDateTimeChange}
-        showTime={true}
+        showTime={false}
         formatDate={FORMAT_DATE[0]}
         formatTime={FORMAT_TIME[1]}
-        // Autres props si nécessaire
+        language={"en"}
       />
     </div>
   );
