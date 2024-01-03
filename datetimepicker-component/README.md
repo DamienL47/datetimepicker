@@ -71,3 +71,25 @@ Les props suivantes sont disponibles pour le `DateTimePicker`
 |            setTime | Fonction pour mettre à jour l'heure sélectionnée.                                                             |
 |         formatTime | Fomat de l'heure (voir Constant.js utiliser FORMAT_TIME[0])                                                   |
 |      disabledHours | Tableau d'heures à désactiver (par exemple, [0, 1, 23] pour désactiver minuit, 1h du matin, et 23h)           |
+
+## Langues et Localisation
+
+Pour changer la langue du composant `DateTimePicker` utiliser :
+
+```bash
+import "moment/locale/*"; // "*" = Utiliser en, es, de, etc...
+```
+
+puis passer en props comme suit :
+
+```bash
+<DateTimePicker language="fr" //... />
+```
+
+## Licence
+
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+## Contribution
+
+Les contributions à ce projet sont les bienvenues. Veuillez consulter les issues ouverts ou soumettre des pull requests.
