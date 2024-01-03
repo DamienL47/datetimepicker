@@ -1,22 +1,5 @@
-// import React from "react";
-// import ReactDOM from "react-dom";
-// import { DateTimePicker } from "./lib/DateTimePicker/DateTimePicker";
-// import moment from "moment";
-
-// const App = () => {
-//   return (
-//     <div>
-//       <DateTimePicker dateTime={moment} setDateTime={moment} showTime={true} />
-//     </div>
-//   );
-// };
-
-// ReactDOM.render(<App />, document.getElementById("root"));
-
-//test
-
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { DateTimePicker } from "./lib/DateTimePicker/DateTimePicker";
 import moment from "moment";
 import { FORMAT_DATE, FORMAT_TIME } from "./lib/Constants";
@@ -50,4 +33,7 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+// Utilisation de createRoot pour rendre l'application React
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(<App />);

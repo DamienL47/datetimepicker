@@ -22,7 +22,7 @@ Pour utiliser ce composant dans votre projet React...
 
 ```bash
 import React, { useState } from 'react';
-import { DateTimePicker } from 'nom-du-paquet';
+import { DateTimePicker } from 'react-datetimepicker';
 import moment from 'moment';
 
 function App() {
