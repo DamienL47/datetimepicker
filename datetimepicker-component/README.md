@@ -20,7 +20,7 @@ yarn add react-datetimepicker
 
 Pour utiliser ce composant dans votre projet React...
 
-```
+```bash
 import React, { useState } from 'react';
 import { DateTimePicker } from 'nom-du-paquet';
 import moment from 'moment';
