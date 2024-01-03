@@ -1,12 +1,50 @@
-import React from "react";
+// import React from "react";
+// import ReactDOM from "react-dom";
+// import { DateTimePicker } from "./lib/DateTimePicker/DateTimePicker";
+// import moment from "moment";
+
+// const App = () => {
+//   return (
+//     <div>
+//       <DateTimePicker dateTime={moment} setDateTime={moment} showTime={true} />
+//     </div>
+//   );
+// };
+
+// ReactDOM.render(<App />, document.getElementById("root"));
+
+//test
+
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { DateTimePicker } from "./lib/DateTimePicker/DateTimePicker";
 import moment from "moment";
+import { FORMAT_DATE, FORMAT_TIME } from "./lib/Constants"; // Assurez-vous que le chemin est correct
 
 const App = () => {
+  const [dateTime, setDateTime] = useState({
+    date: moment(), // Initialisation avec la date actuelle
+    time: {
+      hour: moment().hour(),
+      minute: moment().minute(),
+      second: moment().second(),
+    },
+  });
+
+  const handleDateTimeChange = (newDateTime) => {
+    setDateTime(newDateTime);
+  };
+
   return (
     <div>
-      <DateTimePicker dateTime={moment} setDateTime={moment} showTime={true} />
+      <DateTimePicker
+        value={dateTime}
+        onChange={handleDateTimeChange}
+        showTime={true}
+        formatDate={FORMAT_DATE[0]} // Choisissez le format de date souhaité
+        formatTime={FORMAT_TIME[1]} // Choisissez le format de temps souhaité
+        // Autres props si nécessaire
+      />
     </div>
   );
 };

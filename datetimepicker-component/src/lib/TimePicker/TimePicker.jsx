@@ -1,59 +1,85 @@
+import React from "react";
 import s from "./style.module.css";
+import { FORMAT_TIME } from "../Constants";
 
-export function TimePicker({ time, setTime }) {
-  // Vérification pour s'assurer que time est défini
+export function TimePicker({
+  time,
+  setTime,
+  disabledHours = [],
+  formatTime = FORMAT_TIME[0],
+}) {
   if (!time) {
-    return null; // ou une autre gestion d'erreur
+    return null;
   }
 
-  const handleTimeChange = (e) => {
-    const { name, value } = e.target;
-    let intValue = parseInt(value, 10);
+  const showSeconds = formatTime.includes("ss");
 
-    // Validation des valeurs
-    if (name === "hour" && (intValue < 0 || intValue > 23)) return;
-    if (
-      (name === "minute" || name === "second") &&
-      (intValue < 0 || intValue > 59)
-    )
-      return;
-    if (isNaN(intValue)) intValue = 0;
-
-    setTime({ ...time, [name]: intValue });
+  const handleTimeChange = (e, unit) => {
+    setTime({ ...time, [unit]: parseInt(e.target.value, 10) });
   };
 
-  const formatTimeValue = (value) => {
-    return value.toString().padStart(2, "0");
+  const generateOptions = (min, max, disabledValues = []) => {
+    const options = [];
+    for (let i = min; i <= max; i++) {
+      if (!disabledValues.includes(i)) {
+        options.push(
+          <option key={i} value={i}>
+            {i.toString().padStart(2, "0")}
+          </option>
+        );
+      }
+    }
+    return options;
   };
 
   return (
     <div className={s.timePicker}>
-      <input
-        type="number"
-        name="hour"
-        value={formatTimeValue(time.hour)}
-        onChange={handleTimeChange}
-        min="0"
-        max="23"
-      />
-      <span>:</span>
-      <input
-        type="number"
-        name="minute"
-        value={formatTimeValue(time.minute)}
-        onChange={handleTimeChange}
-        min="0"
-        max="59"
-      />
-      <span>:</span>
-      <input
-        type="number"
-        name="second"
-        value={formatTimeValue(time.second)}
-        onChange={handleTimeChange}
-        min="0"
-        max="59"
-      />
+      {!showSeconds ? (
+        <>
+          <select
+            value={time.hour}
+            onChange={(e) => handleTimeChange(e, "hour")}
+            className={s.selector}
+          >
+            {generateOptions(0, 23, disabledHours)}
+          </select>
+          <span className={s.separator}>:</span>
+          <select
+            value={time.minute}
+            onChange={(e) => handleTimeChange(e, "minute")}
+            className={s.selector}
+          >
+            {generateOptions(0, 59)}
+          </select>
+        </>
+      ) : (
+        <>
+          <select
+            value={time.hour}
+            onChange={(e) => handleTimeChange(e, "hour")}
+          >
+            {generateOptions(0, 23, disabledHours)}
+          </select>
+          <span>:</span>
+          <select
+            value={time.minute}
+            onChange={(e) => handleTimeChange(e, "minute")}
+          >
+            {generateOptions(0, 59)}
+          </select>
+          {showSeconds && (
+            <>
+              <span>:</span>
+              <select
+                value={time.second}
+                onChange={(e) => handleTimeChange(e, "second")}
+              >
+                {generateOptions(0, 59)}
+              </select>
+            </>
+          )}
+        </>
+      )}
     </div>
   );
 }
