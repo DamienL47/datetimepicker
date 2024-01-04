@@ -21,9 +21,10 @@ yarn add react-dl-datetimepicker
 Pour utiliser ce composant dans votre projet React...
 
 ```bash
-import React, { useState } from 'react';
-import { DateTimePicker } from 'react-dl-datetimepicker';
-import moment from 'moment';
+import React, { useState } from "react";
+import moment from "moment";
+import DateTimePicker from "react-dl-datetimepicker";
+import { FORMAT_DATE } from "react-dl-datetimepicker/dist/Constants";
 
 function App() {
   const [dateTime, setDateTime] = useState({
@@ -38,14 +39,19 @@ function App() {
   const handleDateTimeChange = (newDateTime) => {
     setDateTime(newDateTime);
   };
-
   return (
-    <DateTimePicker
-      value={dateTime}
-      onChange={handleDateTimeChange}
-      showTime={true}
-      // Autres props si nécessaire
-    />
+    <>
+      <div className="container">
+        <DateTimePicker
+          value={dateTime}
+          onChange={handleDateTimeChange}
+          formatDate={FORMAT_DATE[0]}
+          formatTime={"HH:mm"}
+          LANGUAGE={"en"}
+          showTime={false}
+        />
+      </div>
+    </>
   );
 }
 
