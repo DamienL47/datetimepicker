@@ -7,13 +7,13 @@ Un sélecteur de date et d'heure flexible pour React utilisant Moment.js.
 Pour installer ce composant, utilisez npm ou yarn comme suit :
 
 ```bash
-npm install react-datetimepicker
+npm install react-dl-datetimepicker
 ```
 
 ou
 
 ```bash
-yarn add react-datetimepicker
+yarn add react-dl-datetimepicker
 ```
 
 ## Utilisation
@@ -22,7 +22,7 @@ Pour utiliser ce composant dans votre projet React...
 
 ```bash
 import React, { useState } from 'react';
-import { DateTimePicker } from 'react-datetimepicker';
+import { DateTimePicker } from 'react-dl-datetimepicker';
 import moment from 'moment';
 
 function App() {
