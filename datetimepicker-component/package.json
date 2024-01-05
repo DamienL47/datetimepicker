@@ -1,6 +1,6 @@
 {
   "name": "react-dl-datetimepicker",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -22,7 +22,8 @@
     "start": "react-scripts start",
     "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "pre-use": "npm i -g babel-cli && npm i -g babel-preset-react-app && npm i moment && npm i classnames && npm i @babel/plugin-proposal-private-property-in-object && npm i @babel/runtime"
   },
   "eslintConfig": {
     "extends": [

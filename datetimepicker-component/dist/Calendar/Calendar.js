@@ -25,6 +25,12 @@ function Calendar(_ref) {
   (0, _react.useEffect)(() => {
     setCurrentDate(date ? (0, _moment.default)(date) : (0, _moment.default)());
   }, [date]);
+  const setCurrentDateToToday = () => {
+    const today = (0, _moment.default)();
+    if (!isDateDisabled(today.date())) {
+      setDate(today);
+    }
+  };
   const daysOfWeek = _moment.default.weekdaysShort();
   const monthNames = _moment.default.months();
   const getDaysInMonth = () => currentDate.daysInMonth();
@@ -92,7 +98,10 @@ function Calendar(_ref) {
     className: calendarClass
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: showTime ? _styleModule.default.header : _styleModule.default.headerSTF
-  }, renderMonthSelector(), renderYearSelector()), /*#__PURE__*/_react.default.createElement("div", {
+  }, renderMonthSelector(), renderYearSelector(), /*#__PURE__*/_react.default.createElement("button", {
+    className: _styleModule.default.button,
+    onClick: setCurrentDateToToday
+  }, "Today")), /*#__PURE__*/_react.default.createElement("div", {
     className: showTime ? _styleModule.default.days : _styleModule.default.daysSTF
   }, renderDays()), /*#__PURE__*/_react.default.createElement("div", {
     className: showTime ? _styleModule.default.cells : _styleModule.default.cellsSTF

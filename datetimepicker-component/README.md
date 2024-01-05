@@ -10,10 +10,22 @@ Pour installer ce composant, utilisez npm ou yarn comme suit :
 npm install react-dl-datetimepicker
 ```
 
+et
+
+```bash
+npm pre-use
+```
+
 ou
 
 ```bash
 yarn add react-dl-datetimepicker
+```
+
+et
+
+```bash
+yarn pre-use
 ```
 
 ## Utilisation

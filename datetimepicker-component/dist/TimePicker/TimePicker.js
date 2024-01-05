@@ -7,7 +7,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.TimePicker = TimePicker;
 var _react = _interopRequireDefault(require("react"));
 var _styleModule = _interopRequireDefault(require("./style.module.css"));
-var _Constants = require("../Constants");
 function TimePicker(_ref) {
   let {
     time,

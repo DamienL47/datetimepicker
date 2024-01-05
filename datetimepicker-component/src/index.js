@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
-import { DateTimePicker } from "./src/lib/DateTimePicker/DateTimePicker";
+import { DateTimePicker } from "./lib/DateTimePicker/DateTimePicker";
 import moment from "moment";
-import { FORMAT_DATE, FORMAT_TIME } from "./src/lib/Constants";
+import { FORMAT_DATE, FORMAT_TIME } from "./lib/Constants";
 import "moment/locale/fr";
 
 const App = () => {
@@ -24,7 +24,7 @@ const App = () => {
       <DateTimePicker
         value={dateTime}
         onChange={handleDateTimeChange}
-        showTime={false}
+        showTime={true}
         formatDate={FORMAT_DATE[0]}
         formatTime={FORMAT_TIME[1]}
         language={"en"}

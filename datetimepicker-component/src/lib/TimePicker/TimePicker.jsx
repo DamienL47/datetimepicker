@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./style.module.css";
-import { FORMAT_TIME } from "../Constants";
 
 export function TimePicker({ time, setTime, disabledHours = [], formatTime }) {
   if (!time) {

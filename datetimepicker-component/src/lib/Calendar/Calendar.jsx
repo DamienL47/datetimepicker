@@ -22,6 +22,13 @@ export function Calendar({
     setCurrentDate(date ? moment(date) : moment());
   }, [date]);
 
+  const setCurrentDateToToday = () => {
+    const today = moment();
+    if (!isDateDisabled(today.date())) {
+      setDate(today);
+    }
+  };
+
   const daysOfWeek = moment.weekdaysShort();
   const monthNames = moment.months();
 
@@ -120,6 +127,9 @@ export function Calendar({
       <div className={showTime ? s.header : s.headerSTF}>
         {renderMonthSelector()}
         {renderYearSelector()}
+        <button className={s.button} onClick={setCurrentDateToToday}>
+          Today
+        </button>
       </div>
       <div className={showTime ? s.days : s.daysSTF}>{renderDays()}</div>
       <div className={showTime ? s.cells : s.cellsSTF}>{renderCells()}</div>

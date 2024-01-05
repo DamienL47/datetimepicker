@@ -3,7 +3,6 @@ import moment from "moment";
 import s from "./style.module.css";
 import { Calendar } from "../Calendar/Calendar";
 import { TimePicker } from "../TimePicker/TimePicker";
-import { FORMAT_DATE, FORMAT_TIME } from "../Constants";
 
 export function DateTimePicker({
   value,
