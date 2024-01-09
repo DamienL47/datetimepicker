@@ -14,6 +14,7 @@ export function DateTimePicker({
   disabledDates,
   disabledDaysOfWeek,
   disabledHours,
+  style,
 }) {
   const [showPopup, setShowPopup] = useState(false);
 
@@ -47,6 +48,8 @@ export function DateTimePicker({
         onClick={togglePopup}
         readOnly
         className={s.inputField}
+        name="calendar"
+        style={style}
       />
       {showPopup && (
         <div className={s.popup}>
