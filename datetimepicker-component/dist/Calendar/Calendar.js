@@ -58,8 +58,8 @@ function Calendar(_ref) {
   const renderYearSelector = () => {
     const currentYear = currentDate.year();
     const years = Array.from({
-      length: 10
-    }, (_, i) => currentYear - 5 + i);
+      length: 50
+    }, (_, i) => currentYear - 50 + i);
     return /*#__PURE__*/_react.default.createElement("select", {
       value: currentYear,
       onChange: e => setCurrentDate(currentDate.clone().year(e.target.value)),
