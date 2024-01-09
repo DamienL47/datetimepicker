@@ -71,12 +71,18 @@ export function Calendar({
 
   const renderYearSelector = () => {
     const currentYear = currentDate.year();
-    const years = Array.from({ length: 50 }, (_, i) => currentYear - 50 + i);
+    const startYear = currentYear - 60;
+    const endYear = currentYear + 5;
+    const years = Array.from(
+      { length: endYear - startYear + 1 },
+      (_, i) => startYear + i
+    );
+
     return (
       <select
         value={currentYear}
         onChange={(e) =>
-          setCurrentDate(currentDate.clone().year(e.target.value))
+          setCurrentDate(currentDate.clone().year(parseInt(e.target.value)))
         }
         className={s.selector}
       >
