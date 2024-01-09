@@ -1,52 +1,9 @@
-.cell {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    border: 1px solid #ccc;
-    padding: 1em;
-    box-sizing: border-box;
-    cursor: pointer;
-}
-.cell:hover {
-    background-color: #e6e6e6;
-}
 
-.cell:active {
-    background-color: #d9d9d9;
-}
-
-.cell.selected {
-    background-color: #1890ff;
-    color: #fff;
-}
-
-.cellSTF {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ccc;
-    padding: 1em;
-    box-sizing: border-box;
-    cursor: pointer;
-}
-.cellSTF:hover {
-    background-color: #e6e6e6;
-}
-
-.cellSTF:active {
-    background-color: #d9d9d9;
-}
-
-.cellSTF.selected {
-    background-color: #1890ff;
-    color: #fff;
-}
 
 .calendarContainer {
     display: flex;
     flex-direction: column;
-    width: max-content;
+    width: 100%;
     height: 100%;
     height: 150%;
     border-radius: 4px;
@@ -57,7 +14,7 @@
 .calendarContainerSTF {
     display: flex;
     flex-direction: column;
-    width: max-content;
+    width: 100%;
     height: 100%;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -69,6 +26,7 @@
     display: flex;
     align-items: center;
     padding: 0 10px;
+    width: 100%;
     height: 40px;
     box-sizing: border-box;
     background-color: #f5f5f5;
@@ -78,6 +36,7 @@
     display: flex;
     align-items: center;
     padding: 0 10px;
+    width: 100%;
     height: 40px;
     box-sizing: border-box;
     background-color: #f5f5f5;
@@ -185,9 +144,67 @@
     width: 100%;
     box-sizing: border-box;
 }
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 0.5em;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.cell:hover {
+    background-color: #e6e6e6;
+}
+
+.cell:active {
+    background-color: #d9d9d9;
+}
+
+.cell.selected {
+    background-color: #1890ff;
+    color: #fff;
+}
+
+.cellSTF {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 1em;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.cellSTF:hover {
+    background-color: #e6e6e6;
+}
+
+.cellSTF:active {
+    background-color: #d9d9d9;
+}
+
+.cellSTF.selected {
+    background-color: #1890ff;
+    color: #fff;
+}
 
 .times {
     width: 100%;
     height: 100%;
 }
 
+@media screen and (max-width: 768px) {
+    .calendarContainer {
+        height: 100%;
+    }
+    .calendarContainerSTF {
+        height: 100%;
+    }
+    .button {
+        position: absolute;
+        top: 51%;
+        right: 10%;
+    }
+    
+}
