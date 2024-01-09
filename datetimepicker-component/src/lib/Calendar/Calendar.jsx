@@ -71,7 +71,7 @@ export function Calendar({
 
   const renderYearSelector = () => {
     const currentYear = currentDate.year();
-    const years = Array.from({ length: 10 }, (_, i) => currentYear - 5 + i);
+    const years = Array.from({ length: 50 }, (_, i) => currentYear - 50 + i);
     return (
       <select
         value={currentYear}
