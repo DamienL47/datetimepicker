@@ -57,12 +57,14 @@ function Calendar(_ref) {
   }, month)));
   const renderYearSelector = () => {
     const currentYear = currentDate.year();
+    const startYear = currentYear - 60;
+    const endYear = currentYear + 5;
     const years = Array.from({
-      length: 50
-    }, (_, i) => currentYear - 50 + i);
+      length: endYear - startYear + 1
+    }, (_, i) => startYear + i);
     return /*#__PURE__*/_react.default.createElement("select", {
       value: currentYear,
-      onChange: e => setCurrentDate(currentDate.clone().year(e.target.value)),
+      onChange: e => setCurrentDate(currentDate.clone().year(parseInt(e.target.value))),
       className: _styleModule.default.selector
     }, years.map(year => /*#__PURE__*/_react.default.createElement("option", {
       key: year,
