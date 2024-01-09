@@ -21,7 +21,8 @@ function DateTimePicker(_ref) {
     language,
     disabledDates,
     disabledDaysOfWeek,
-    disabledHours
+    disabledHours,
+    style
   } = _ref;
   const [showPopup, setShowPopup] = (0, _react.useState)(false);
   const togglePopup = () => {
@@ -49,7 +50,9 @@ function DateTimePicker(_ref) {
     value: displayValue(),
     onClick: togglePopup,
     readOnly: true,
-    className: _styleModule.default.inputField
+    className: _styleModule.default.inputField,
+    name: "calendar",
+    style: style
   }), showPopup && /*#__PURE__*/_react.default.createElement("div", {
     className: _styleModule.default.popup
   }, /*#__PURE__*/_react.default.createElement(_Calendar.Calendar, {

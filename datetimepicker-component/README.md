@@ -89,6 +89,7 @@ Les props suivantes sont disponibles pour le `DateTimePicker`
 |            setTime | Fonction pour mettre à jour l'heure sélectionnée.                                                             |
 |         formatTime | Fomat de l'heure (voir Constant.js utiliser FORMAT_TIME[0])                                                   |
 |      disabledHours | Tableau d'heures à désactiver (par exemple, [0, 1, 23] pour désactiver minuit, 1h du matin, et 23h)           |
+|              style | Ajout de style CSS personnalisé en props                                                                      |
 
 ## Langues et Localisation
 
